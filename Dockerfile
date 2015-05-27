@@ -18,11 +18,12 @@ RUN apk update \
     && rm ui.zip \
     && apk del make wget go git gcc musl-dev openssl-dev bash libgcc \
     && rm -rf /var/cache/apk/* \\
-    && mkdir -p /var/run/consul/{data,config}
+    && mkdir -p /var/run/consul/data
+    && mkdir -p /etc/consul.d
 
 EXPOSE 8300 8301 8301/udp 8302 8302/udp 8400 8500 8600 8600/udp
 
-VOLUME ["/var/run/consul/data", "/var/run/consul/config"]
+VOLUME ["/var/run/consul/data", "/etc/consul.d"]
 
 ENTRYPOINT ["/bin/consul"]
 
