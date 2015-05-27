@@ -2,6 +2,7 @@ FROM alpine:3.1
 MAINTAINER Jose Monreal <jmonreal@gmail.com>
 
 RUN apk update \
+    && apk upgrade \
     && apk add make wget go git gcc musl-dev openssl-dev bash libgcc \
     && export GOPATH=/go \
     && go get -u -v github.com/hashicorp/consul \
